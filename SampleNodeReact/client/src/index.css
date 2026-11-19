@@ -1,0 +1,109 @@
+:root {
+  --navy: #1e3a5f;
+  --navy-dark: #152a45;
+  --border: #d0d7de;
+  --bg: #f4f6f8;
+  --error: #b42318;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  font-family: "Segoe UI", Tahoma, sans-serif;
+  background: var(--bg);
+  margin: 0;
+  color: #1f2328;
+}
+
+.wrap {
+  max-width: 580px;
+  margin: 32px auto;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 24px 28px 28px;
+}
+
+h1 {
+  margin: 0 0 8px;
+  font-size: 1.35rem;
+  color: var(--navy);
+}
+
+.lede {
+  color: #57606a;
+  font-size: 0.9rem;
+  margin-bottom: 20px;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 190px 1fr;
+  gap: 8px;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+label, .row > span {
+  font-weight: 600;
+  font-size: 0.875rem;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="url"],
+input:not([type]),
+select {
+  width: 100%;
+  padding: 6px 8px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+}
+
+.radios {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.radios label {
+  font-weight: 500;
+}
+
+button {
+  background: var(--navy);
+  color: #fff;
+  border: 0;
+  padding: 8px 18px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 600;
+  margin-top: 8px;
+}
+
+button:hover { background: var(--navy-dark); }
+button:disabled { opacity: 0.7; cursor: default; }
+
+.note {
+  font-size: 0.8rem;
+  color: #57606a;
+  margin-top: 16px;
+}
+
+.req { color: var(--error); }
+
+.error {
+  background: #f8d7da;
+  color: var(--error);
+  padding: 8px 12px;
+  border-radius: 4px;
+  margin-bottom: 16px;
+}
+
+code {
+  font-size: 0.85em;
+}
+
+@media (max-width: 600px) {
+  .row { grid-template-columns: 1fr; }
+}

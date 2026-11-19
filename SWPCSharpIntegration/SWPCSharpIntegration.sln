@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 18
+VisualStudioVersion = 18.0.0.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SWPCSharpIntegration", "SWPCSharpIntegration\SWPCSharpIntegration.csproj", "{AB4F7A54-B3BE-4CF5-ACBD-BDB4889A5450}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AB4F7A54-B3BE-4CF5-ACBD-BDB4889A5450}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AB4F7A54-B3BE-4CF5-ACBD-BDB4889A5450}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AB4F7A54-B3BE-4CF5-ACBD-BDB4889A5450}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AB4F7A54-B3BE-4CF5-ACBD-BDB4889A5450}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {47ADB313-34BA-4C4A-9EDA-9312A355EDB9}
+	EndGlobalSection
+EndGlobal

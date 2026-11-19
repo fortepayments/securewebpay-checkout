@@ -1,0 +1,10 @@
+<publishData>
+  <publishTarget publishUrl="\\staging-web-1\c$\Inetpub\wwwroot\SampleVBNetCode\">
+    <file relUrl="bin/SampleVBNetCode.dll" publishTime="10/20/2011 13:48:59" />
+    <file relUrl="bin/SampleVBNetCode.xml" publishTime="10/20/2011 13:48:59" />
+    <file relUrl="GenerateHash.aspx" publishTime="10/20/2011 13:34:32" />
+    <file relUrl="SampleVBNetCode.aspx" publishTime="10/05/2011 11:25:23" />
+    <file relUrl="bin/SampleVBNetCode.pdb" publishTime="10/20/2011 13:48:59" />
+    <file relUrl="Web.config" publishTime="07/07/2011 10:33:42" />
+  </publishTarget>
+</publishData>

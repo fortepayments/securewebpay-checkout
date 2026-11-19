@@ -1,0 +1,121 @@
+@page
+@model SampleAspNetCore.Pages.IndexModel
+@{
+    ViewData["Title"] = "SWP ASP.NET Core sample";
+}
+
+@if (Model.ReadyToPost)
+{
+    <h1>Redirecting to Secure Web Payments</h1>
+    <p class="lede">The server hash was created. This form posts only SWP fields &mdash; the secret key is not included.</p>
+    <form id="swp-post" method="post" action="@Model.CheckoutUrl">
+        <input type="hidden" name="pg_api_login_id" value="@Model.PgApiLoginId" />
+        <input type="hidden" name="pg_template_id" value="200" />
+        <input type="hidden" name="pg_billto_postal_name_company" value="@Model.PgBilltoPostalNameCompany" />
+        <input type="hidden" name="pg_billto_postal_name_first" value="@Model.PgBilltoPostalNameFirst" />
+        <input type="hidden" name="pg_billto_postal_name_last" value="@Model.PgBilltoPostalNameLast" />
+        @if (!string.IsNullOrWhiteSpace(Model.PgReturnUrl))
+        {
+            <input type="hidden" name="pg_return_url" value="@Model.PgReturnUrl" />
+        }
+        @if (Model.IsSecureTransaction)
+        {
+            <input type="hidden" name="pg_ts_hash" value="@Model.PgTsHash" />
+            <input type="hidden" name="pg_transaction_type" value="@Model.PgTransactionType" />
+            <input type="hidden" name="pg_version_number" value="1.0" />
+            <input type="hidden" name="pg_utc_time" value="@Model.PgUtcTime" />
+            <input type="hidden" name="pg_transaction_order_number" value="@Model.PgTransactionOrderNumber" />
+            <input type="hidden" name="pg_total_amount" value="@Model.PgTotalAmount" />
+        }
+        <noscript><button type="submit">Continue to checkout</button></noscript>
+    </form>
+}
+else
+{
+    <h1>SWP hosted checkout sample</h1>
+    <p class="lede">ASP.NET Core Razor Pages. HMAC-MD5 is created on the server, then the browser posts to SWP.</p>
+
+    @if (!ViewData.ModelState.IsValid)
+    {
+        <div class="error">@Html.ValidationSummary(false)</div>
+    }
+
+    <form method="post">
+        <div class="row">
+            <label for="PgApiLoginId">API Login ID</label>
+            <input asp-for="PgApiLoginId" />
+        </div>
+        <div class="row">
+            <label for="SecureTransactionKey">Secure Transaction Key</label>
+            <input asp-for="SecureTransactionKey" type="password" autocomplete="off" />
+        </div>
+        <div class="row">
+            <label for="CheckoutUrl">Checkout URL</label>
+            <input asp-for="CheckoutUrl" />
+        </div>
+        <div class="row">
+            <label for="PgReturnUrl">Return URL</label>
+            <input asp-for="PgReturnUrl" />
+        </div>
+        <div class="row">
+            <label for="PgBilltoPostalNameCompany">Company Name</label>
+            <input asp-for="PgBilltoPostalNameCompany" />
+        </div>
+        <div class="row">
+            <label for="PgBilltoPostalNameFirst">First Name</label>
+            <input asp-for="PgBilltoPostalNameFirst" />
+        </div>
+        <div class="row">
+            <label for="PgBilltoPostalNameLast">Last Name</label>
+            <input asp-for="PgBilltoPostalNameLast" />
+        </div>
+        <div class="row">
+            <span>Mode</span>
+            <div class="radios">
+                <label><input asp-for="Mode" type="radio" value="html" id="mode-html" /> HTML</label>
+                <label><input asp-for="Mode" type="radio" value="trans" id="mode-trans" /> Secure Transaction</label>
+            </div>
+        </div>
+        <div id="secure-fields">
+            <div class="row">
+                <span>Payment method</span>
+                <div class="radios">
+                    <label><input asp-for="PaymentMethod" type="radio" value="cc" id="method-cc" /> Credit Card</label>
+                    <label><input asp-for="PaymentMethod" type="radio" value="ec" id="method-ec" /> eCheck</label>
+                </div>
+            </div>
+            <div class="row">
+                <label for="PgTransactionType">Transaction Type</label>
+                <select asp-for="PgTransactionType">
+                    <option value="10">Sale</option>
+                    <option value="11">Auth</option>
+                    <option value="13">Credit</option>
+                    <option value="20">Sale</option>
+                    <option value="21">Auth</option>
+                    <option value="23">Credit</option>
+                </select>
+            </div>
+            <div class="row">
+                <label for="PgTransactionOrderNumber">Order Number <span class="req">*</span></label>
+                <input asp-for="PgTransactionOrderNumber" inputmode="numeric" />
+            </div>
+            <div class="row">
+                <label for="PgTotalAmount">Total Amount ($) <span class="req">*</span></label>
+                <input asp-for="PgTotalAmount" inputmode="decimal" />
+            </div>
+        </div>
+        <button type="submit">Submit</button>
+    </form>
+    <p class="note">Replace the placeholder credentials in this form or in <code>appsettings.json</code>. The secret key is used only on the server and is never posted to SWP.</p>
+}
+
+@section Scripts {
+    @if (Model.ReadyToPost)
+    {
+        <script>document.getElementById("swp-post").submit();</script>
+    }
+    else
+    {
+        <script src="~/js/checkout.js"></script>
+    }
+}

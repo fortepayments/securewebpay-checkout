@@ -1,0 +1,13 @@
+{
+  "name": "swp-sample-server",
+  "private": true,
+  "description": "SWP hosted checkout sample — Express API that creates the HMAC-MD5 hash",
+  "scripts": {
+    "start": "node src/index.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.2"
+  }
+}

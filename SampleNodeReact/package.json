@@ -1,0 +1,17 @@
+{
+  "name": "swp-sample-node-react",
+  "private": true,
+  "description": "SWP hosted checkout sample — Express API + React UI",
+  "workspaces": [
+    "client",
+    "server"
+  ],
+  "scripts": {
+    "dev": "concurrently -n server,client -c blue,green \"npm run start --workspace=swp-sample-server\" \"npm run dev --workspace=swp-sample-client\"",
+    "start": "npm run start --workspace=swp-sample-server",
+    "build": "npm run build --workspace=swp-sample-client"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  }
+}
